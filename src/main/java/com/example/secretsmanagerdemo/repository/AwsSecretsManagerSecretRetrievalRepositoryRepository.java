@@ -6,11 +6,11 @@ import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueReques
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;
 import software.amazon.awssdk.services.secretsmanager.model.SecretsManagerException;
 
-public class AwsSecretsManagerSecretRetriever implements SecretRetriever {
+public class AwsSecretsManagerSecretRetrievalRepositoryRepository implements SecretRetrieverRepository {
     private final SecretsManagerClient secretsManagerClient;
 
     @Autowired
-    public AwsSecretsManagerSecretRetriever(SecretsManagerClient secretsManagerClient) {
+    public AwsSecretsManagerSecretRetrievalRepositoryRepository(SecretsManagerClient secretsManagerClient) {
         this.secretsManagerClient = secretsManagerClient;
     }
 

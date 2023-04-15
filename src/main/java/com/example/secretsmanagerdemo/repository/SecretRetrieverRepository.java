@@ -1,6 +1,6 @@
 package com.example.secretsmanagerdemo.repository;
 
-public interface SecretRetriever {
+public interface SecretRetrieverRepository {
     String getSecret(String secretName);
 }
 

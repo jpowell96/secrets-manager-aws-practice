@@ -1,9 +1,8 @@
 package com.example.secretsmanagerdemo.config;
 
-import com.example.secretsmanagerdemo.repository.AwsSecretsManagerSecretRetriever;
-import com.example.secretsmanagerdemo.repository.CompositeSecretsRetriever;
-import com.example.secretsmanagerdemo.repository.LocalPropertySecretsRetriever;
-import com.example.secretsmanagerdemo.repository.SecretRetriever;
+import com.example.secretsmanagerdemo.repository.AwsSecretsManagerSecretRetrievalRepositoryRepository;
+import com.example.secretsmanagerdemo.repository.LocalPropertySecretsRetrievalRepository;
+import com.example.secretsmanagerdemo.repository.SecretRetrieverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,19 +16,13 @@ public class SecretsRetrieverConfig {
     Environment environment;
 
     @Bean
-    @Profile("default")
-    public SecretRetriever localSecretsRetriever(Environment environment) {
-        return new LocalPropertySecretsRetriever(environment);
-    }
-
-    @Bean
-    public SecretRetriever awsSecretsRetriever(SecretsManagerClient secretsManagerClient) {
-        return new AwsSecretsManagerSecretRetriever(secretsManagerClient);
+    public LocalPropertySecretsRetrievalRepository localSecretsRetriever(Environment environment) {
+        return new LocalPropertySecretsRetrievalRepository(environment);
     }
 
     @Bean
     @Profile("prod")
-    public SecretRetriever compositeSecretRetriever(LocalPropertySecretsRetriever localPropertySecretsRetriever, AwsSecretsManagerSecretRetriever awsSecretsManagerSecretRetriever) {
-        return new CompositeSecretsRetriever(awsSecretsManagerSecretRetriever, localPropertySecretsRetriever);
+    public AwsSecretsManagerSecretRetrievalRepositoryRepository awsSecretRetriever(SecretsManagerClient secretsManagerClient) {
+        return new AwsSecretsManagerSecretRetrievalRepositoryRepository(secretsManagerClient);
     }
 }

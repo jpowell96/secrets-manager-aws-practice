@@ -1,5 +1,6 @@
 package com.example.secretsmanagerdemo.controller;
 
+import com.example.secretsmanagerdemo.service.LocalSecretRetrievalService;
 import com.example.secretsmanagerdemo.service.SecretRetrievalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

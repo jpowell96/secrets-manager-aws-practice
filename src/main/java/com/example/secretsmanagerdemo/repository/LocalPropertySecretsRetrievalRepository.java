@@ -3,11 +3,11 @@ package com.example.secretsmanagerdemo.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
-public class LocalPropertySecretsRetriever implements SecretRetriever {
+public class LocalPropertySecretsRetrievalRepository implements SecretRetrieverRepository {
     private final Environment environment;
 
     @Autowired
-    public LocalPropertySecretsRetriever(Environment environment) {
+    public LocalPropertySecretsRetrievalRepository(Environment environment) {
         this.environment = environment;
     }
 

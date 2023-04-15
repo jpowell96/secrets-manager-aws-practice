@@ -25,6 +25,7 @@ public class AwsConfig {
          * 4. Check aws credentials and aws config files
          *
          * Once set up in AWS, will define in the ECS task definition
+         * TODO: Remove hardcoded region
          * */
         return SecretsManagerClient.builder().region(Region.US_EAST_1)
                 .build();
